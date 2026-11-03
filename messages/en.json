@@ -1,0 +1,338 @@
+{
+  "meta": {
+    "title": "Hamilton Textiles — Fine Fabrics by the Metre · Riffa, Bahrain",
+    "description": "Abaya, thobe, silk, cotton and linen fabrics cut to your length. Shop online from Hamilton Textiles in Riffa, Bahrain — delivered across Bahrain and worldwide."
+  },
+  "brand": {
+    "name": "Hamilton",
+    "sub": "Textiles",
+    "legal": "Hamilton Textile W.L.L"
+  },
+  "announcement": "Free delivery across Bahrain on orders over BD 15 · Cut to order, by the metre",
+  "nav": {
+    "shop": "Shop",
+    "collections": "Collections",
+    "newArrivals": "New Arrivals",
+    "offers": "Offers",
+    "visit": "Visit the Shop",
+    "track": "Track Order",
+    "search": "Search fabrics",
+    "cart": "Cart",
+    "menu": "Menu",
+    "close": "Close",
+    "home": "Home"
+  },
+  "switcher": {
+    "language": "Language",
+    "currency": "Currency",
+    "other": "العربية"
+  },
+  "hero": {
+    "eyebrow": "Riffa, Bahrain · Fabrics by the metre",
+    "title": "Fabric worth taking your time over.",
+    "body": "Hand-picked abaya crepes, thobe cottons, silks and linens — cut to the length you need and delivered to your door.",
+    "ctaPrimary": "Shop all fabrics",
+    "ctaSecondary": "Explore collections",
+    "statFabrics": "fabrics in stock",
+    "statFrom": "per metre, from",
+    "statDelivery": "delivery in Bahrain",
+    "statDeliveryValue": "Next day",
+    "rail": {
+      "nida": "Nida",
+      "thobe": "Thobe",
+      "satin": "Satin",
+      "print": "Print"
+    }
+  },
+  "categories": {
+    "eyebrow": "Collections",
+    "title": "Find your fabric",
+    "viewAll": "View all",
+    "count": "{count, plural, one {# fabric} other {# fabrics}}"
+  },
+  "featured": {
+    "eyebrow": "Most loved",
+    "title": "Featured this week",
+    "perMetre": "/ metre",
+    "addToCart": "Add to cart",
+    "lowStock": "Only {metres} m left",
+    "sale": "Offer",
+    "new": "New"
+  },
+  "promise": {
+    "title": "The Hamilton promise",
+    "cut": "Cut to your length",
+    "cutBody": "Order from half a metre up — every piece is measured and cut by hand in our Riffa shop.",
+    "quality": "Quality you can feel",
+    "qualityBody": "Every roll is inspected before it reaches our shelves. Zoom in on any fabric to see the weave.",
+    "delivery": "Delivered anywhere",
+    "deliveryBody": "Next-day delivery across Bahrain, and tracked shipping worldwide.",
+    "secure": "Secure payment",
+    "secureBody": "Pay with BenefitPay or card. Your payment details never touch our servers."
+  },
+  "calculator": {
+    "eyebrow": "Metre calculator",
+    "title": "Not sure how much to buy?",
+    "body": "Tell us what you're making and your height — we'll suggest the right length, with a little extra for seams.",
+    "garment": "I'm making",
+    "height": "Height (cm)",
+    "result": "You'll need about",
+    "metres": "metres",
+    "note": "Based on a 150 cm wide fabric. Wider fabrics need less.",
+    "browse": "Browse suitable fabrics",
+    "garments": {
+      "abaya": "An abaya",
+      "thobe": "A thobe",
+      "jalabiya": "A jalabiya",
+      "dress": "A long dress",
+      "shirt": "A shirt"
+    }
+  },
+  "visit": {
+    "eyebrow": "Visit us",
+    "title": "Come and feel the fabric",
+    "body": "Our shop in Hunainiya, Riffa is open every day. Bring a sample and we'll help you match it.",
+    "address": "Hunainiya, Riffa, Kingdom of Bahrain · P.O. Box 901",
+    "hours": "Open daily · hours to be confirmed",
+    "directions": "Get directions",
+    "whatsapp": "Chat on WhatsApp"
+  },
+  "footer": {
+    "tagline": "Fine fabrics by the metre, from Riffa to the world.",
+    "shop": "Shop",
+    "help": "Help",
+    "shipping": "Shipping & Delivery",
+    "returns": "Returns",
+    "contact": "Contact",
+    "faq": "FAQ",
+    "cr": "CR No. 146350-1",
+    "rights": "All rights reserved.",
+    "payments": "We accept"
+  },
+  "currency": {
+    "note": "Prices in {currency} are approximate. You'll be charged in Bahraini Dinar (BHD)."
+  },
+  "cart": {
+    "title": "Your cart",
+    "close": "Close cart",
+    "empty": "Your cart is empty",
+    "emptyBody": "Browse our fabrics and add the lengths you need.",
+    "startShopping": "Start shopping",
+    "subtotal": "Subtotal",
+    "taxesNote": "Delivery and any discounts are calculated at checkout.",
+    "checkout": "Checkout",
+    "viewCart": "View full cart",
+    "continueShopping": "Continue shopping",
+    "perMetre": "per metre",
+    "remove": "Remove {name}",
+    "less": "Less",
+    "more": "More",
+    "metres": "Metres",
+    "freeDeliveryRemaining": "Add <amount></amount> more for free delivery in Bahrain",
+    "freeDeliveryReached": "You've unlocked free delivery in Bahrain"
+  },
+  "shop": {
+    "eyebrow": "The fabric hall",
+    "title": "All fabrics",
+    "intro": "Every fabric we stock, cut to the length you choose. Filter by colour, occasion or collection.",
+    "category": "Collection",
+    "colour": "Colour",
+    "occasion": "Made for",
+    "offers": "Offers",
+    "onSaleOnly": "On offer only",
+    "searchPlaceholder": "Search by name, colour or fibre",
+    "filters": "Filters",
+    "sortBy": "Sort by",
+    "sorts": {
+      "featured": "Featured",
+      "new": "Newest",
+      "price-asc": "Price: low to high",
+      "price-desc": "Price: high to low"
+    },
+    "results": "{count, plural, =0 {No fabrics} one {# fabric} other {# fabrics}}",
+    "clearAll": "Clear all",
+    "noResults": "Nothing matches — yet",
+    "noResultsBody": "Try removing a filter, or message us on WhatsApp and we'll check the shop for you.",
+    "showResults": "Show {count}",
+    "close": "Close",
+    "removeFilter": "Remove filter",
+    "colours": {
+      "black": "Black",
+      "white": "White & cream",
+      "grey": "Grey",
+      "beige": "Beige",
+      "brown": "Brown",
+      "red": "Red",
+      "pink": "Pink",
+      "orange": "Orange",
+      "yellow": "Yellow",
+      "green": "Green",
+      "blue": "Blue",
+      "purple": "Purple"
+    },
+    "occasions": {
+      "abaya": "Abaya",
+      "thobe": "Thobe",
+      "jalabiya": "Jalabiya",
+      "dress": "Dresses",
+      "shirt": "Shirts",
+      "eid": "Eid",
+      "wedding": "Weddings",
+      "everyday": "Everyday"
+    }
+  },
+  "offers": {
+    "eyebrow": "Limited time",
+    "title": "Offers",
+    "intro": "Selected fabrics at reduced prices, while the rolls last."
+  },
+  "collections": {
+    "eyebrow": "Collections",
+    "title": "Our collections",
+    "intro": "From fluid abaya crepes to crisp thobe cloth — find the right fabric for what you're making."
+  },
+  "fabric": {
+    "viewImage": "View image {n}",
+    "zoomHint": "Hover to see the weave",
+    "perMetre": "per metre",
+    "currencyNote": "Approximate — charged in Bahraini Dinar.",
+    "lowStock": "Only {metres} m left on the roll",
+    "inStock": "In stock — cut and dispatched within a day",
+    "outOfStock": "Out of stock — message us to check for a restock",
+    "length": "Length",
+    "lengthHint": "From {min} m, in steps of {step} m",
+    "total": "Total",
+    "addToCart": "Add to cart",
+    "added": "Added to cart",
+    "alreadyInCart": "You have {metres} m in your cart",
+    "howMuch": "How much do I need?",
+    "askAbout": "Ask about this fabric",
+    "whatsappMessage": "Hello Hamilton Textiles, I have a question about {name} ({sku}).",
+    "specs": {
+      "composition": "Composition",
+      "width": "Width",
+      "weight": "Weight",
+      "colour": "Colour",
+      "sku": "Reference"
+    },
+    "perks": {
+      "cut": "Cut by hand to your exact length in our Riffa shop",
+      "delivery": "Next-day delivery across Bahrain, tracked shipping worldwide",
+      "returns": "Cut fabric can't be returned unless faulty — ask us for a sample first"
+    },
+    "related": "You may also like"
+  },
+  "checkout": {
+    "title": "Checkout",
+    "emptyTitle": "Nothing to check out",
+    "emptyBody": "Your cart is empty.",
+    "backToShop": "Back to the shop",
+    "contact": "Contact",
+    "fullName": "Full name",
+    "email": "Email",
+    "phone": "Mobile number",
+    "optional": "optional",
+    "delivery": "Delivery",
+    "fulfilment": {
+      "delivery": "Deliver to me",
+      "deliveryHint": "Bahrain, the GCC or worldwide",
+      "pickup": "Collect from the shop",
+      "pickupHint": "Free · Hunainiya, Riffa"
+    },
+    "country": "Country",
+    "deliveryTime": "Usually arrives in {days} days",
+    "address": {
+      "area": "Area / town",
+      "block": "Block",
+      "road": "Road",
+      "building": "Building / house",
+      "flat": "Flat",
+      "line1": "Address",
+      "line2": "Apartment, suite, etc.",
+      "city": "City",
+      "postcode": "Postcode"
+    },
+    "pickupFrom": "Collect from Hamilton Textiles",
+    "pickupAddress": "Hunainiya, Riffa, Kingdom of Bahrain",
+    "pickupNote": "We'll message you on WhatsApp when your fabric is cut and ready.",
+    "note": "Order note",
+    "notePlaceholder": "Anything we should know? e.g. please cut in two pieces",
+    "payment": "Payment",
+    "paymentNote": "You'll pay securely on the next page with BenefitPay or a debit/credit card.",
+    "summary": "Order summary",
+    "problems": {
+      "missing": "No longer available — please remove it",
+      "length": "Please choose a valid length",
+      "stock": "Only {metres} m available — please reduce"
+    },
+    "promoPlaceholder": "Promo code",
+    "apply": "Apply",
+    "promo": {
+      "applied": "{code} applied",
+      "invalid": "{code} isn't a valid code",
+      "expired": "{code} has expired",
+      "minimum": "Your order doesn't reach the minimum for {code}"
+    },
+    "subtotal": "Subtotal",
+    "discount": "Discount",
+    "shipping": "Delivery",
+    "free": "Free",
+    "vat": "VAT",
+    "total": "Total",
+    "chargedInBhd": "You'll be charged the equivalent in Bahraini Dinar (BHD).",
+    "processing": "Preparing payment…",
+    "pay": "Continue to payment",
+    "terms": "By placing your order you agree to our terms and returns policy.",
+    "errors": {
+      "validation": "Please check the highlighted fields.",
+      "cart": "Some items in your cart need attention.",
+      "promo": "That promo code can't be used — remove it or try another.",
+      "unavailable": "Online payment isn't available right now. Please message us on WhatsApp to order.",
+      "payment": "We couldn't start the payment. Please try again in a moment.",
+      "server": "Something went wrong on our side. Please try again."
+    }
+  },
+  "order": {
+    "orderNumber": "Order number",
+    "paid": {
+      "title": "Thank you!",
+      "body": "Your payment went through and your order is confirmed. We'll start cutting your fabric and send you updates."
+    },
+    "pending": {
+      "title": "Payment processing",
+      "body": "Your bank is still confirming the payment. This page will be updated — you can also track your order in a few minutes."
+    },
+    "failed": {
+      "title": "Payment not completed",
+      "body": "No money was taken. You can try again, or message us on WhatsApp and we'll help."
+    },
+    "demoNote": "Demo order — payments aren't connected yet, so nothing was charged or saved.",
+    "tryAgain": "Try again",
+    "trackOrder": "Track my order",
+    "keepShopping": "Keep shopping"
+  },
+  "track": {
+    "eyebrow": "Order status",
+    "title": "Track your order",
+    "intro": "Enter your order number and the mobile number you used at checkout.",
+    "orderNumber": "Order number",
+    "phone": "Mobile number",
+    "find": "Find my order",
+    "placeholder": "Your order's progress will appear here.",
+    "errors": {
+      "invalid": "Please check the order number (e.g. HT-1001) and mobile number.",
+      "notFound": "We couldn't find an order with those details.",
+      "unavailable": "Order tracking isn't available yet. Please message us on WhatsApp."
+    },
+    "status": {
+      "pending_payment": "Awaiting payment",
+      "paid": "Order confirmed",
+      "packed": "Cut and packed",
+      "shipped": "On its way",
+      "ready_for_pickup": "Ready to collect",
+      "delivered": "Delivered",
+      "cancelled": "This order was cancelled.",
+      "refunded": "This order was refunded."
+    }
+  }
+}
