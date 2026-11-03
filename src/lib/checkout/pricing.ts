@@ -1,21 +1,8 @@
 import { getMaterials, type Material } from "@/lib/catalog";
-import { getAdminSupabase } from "@/lib/supabase/admin";
+import { getRepo, type PromoCode } from "@/lib/data";
 import { isValidLength, lineTotal } from "@/lib/metres";
 import { shippingFor, VAT_RATE } from "@/lib/shipping";
 import type { QuoteInput } from "./schema";
-
-export type PromoCode = {
-  id: string | null;
-  code: string;
-  kind: "percent" | "fixed";
-  value: number;
-  min_order_fils: number;
-  max_uses: number | null;
-  used_count: number;
-  starts_at: string | null;
-  expires_at: string | null;
-  is_active: boolean;
-};
 
 export type PricedLine = {
   material: Material;
@@ -39,17 +26,8 @@ export type Quote = {
   promoStatus: PromoStatus;
 };
 
-// Used only while Supabase isn't connected, so the checkout can be tried end to end.
-const DEMO_PROMOS: PromoCode[] = [
-  { id: null, code: "WELCOME10", kind: "percent", value: 10, min_order_fils: 0, max_uses: null, used_count: 0, starts_at: null, expires_at: null, is_active: true },
-];
-
 async function findPromo(code: string): Promise<PromoCode | null> {
-  const db = getAdminSupabase();
-  if (!db) return DEMO_PROMOS.find((p) => p.code === code) ?? null;
-  const { data, error } = await db.from("promo_codes").select("*").eq("code", code).maybeSingle();
-  if (error) throw error;
-  return data as PromoCode | null;
+  return getRepo().getPromoByCode(code);
 }
 
 function promoProblem(p: PromoCode, subtotalFils: number): Exclude<PromoStatus, "applied" | null> | null {

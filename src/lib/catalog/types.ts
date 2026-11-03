@@ -47,6 +47,7 @@ export type Material = {
   min_order_m: number;
   step_m: number;
   is_featured: boolean;
+  is_active: boolean;
   created_at: string;
   images: { url: string; alt_en: string | null; alt_ar: string | null }[];
 };

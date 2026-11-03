@@ -10,6 +10,10 @@ const nextConfig: NextConfig = {
       { protocol: "https", hostname: "images.unsplash.com" },
     ],
   },
+  experimental: {
+    // Fabric photos are resized on the phone first; this leaves headroom.
+    serverActions: { bodySizeLimit: "6mb" },
+  },
 };
 
 export default withNextIntl(nextConfig);

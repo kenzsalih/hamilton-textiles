@@ -1,4 +1,4 @@
-import { getAdminSupabase } from "@/lib/supabase/admin";
+import { getRepo } from "@/lib/data";
 import { retrieveCharge } from "./tap";
 
 export type ConfirmResult =
@@ -12,19 +12,12 @@ export type ConfirmResult =
  * order paid. Safe to call from both the redirect page and the webhook.
  */
 export async function confirmCharge(chargeId: string): Promise<ConfirmResult> {
-  const db = getAdminSupabase();
-  if (!db) throw new Error("Supabase is not configured");
-
+  const repo = getRepo();
   const charge = await retrieveCharge(chargeId);
   const orderId = charge.metadata?.order_id ?? charge.reference?.transaction;
   if (!orderId) return { status: "failed", orderNumber: null, reason: "unknown-order" };
 
-  const { data: order, error } = await db
-    .from("orders")
-    .select("id, order_number, total_fils, status")
-    .eq("id", orderId)
-    .maybeSingle();
-  if (error) throw error;
+  const order = await repo.getOrder(orderId);
   if (!order) return { status: "failed", orderNumber: null, reason: "unknown-order" };
 
   if (order.status !== "pending_payment") {
@@ -47,8 +40,6 @@ export async function confirmCharge(chargeId: string): Promise<ConfirmResult> {
   }
 
   const method = charge.source?.payment_method?.toUpperCase() === "BENEFIT" ? "benefitpay" : "card";
-  const { error: rpcError } = await db.rpc("mark_order_paid", { p_order_id: order.id, p_payment_ref: charge.id, p_method: method });
-  if (rpcError) throw rpcError;
-
+  await repo.markOrderPaid(order.id, charge.id, method);
   return { status: "paid", orderNumber: order.order_number };
 }

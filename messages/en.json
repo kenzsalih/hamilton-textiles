@@ -306,7 +306,7 @@
       "title": "Payment not completed",
       "body": "No money was taken. You can try again, or message us on WhatsApp and we'll help."
     },
-    "demoNote": "Demo order — payments aren't connected yet, so nothing was charged or saved.",
+    "demoNote": "Test order — payment was simulated because Tap isn't connected yet. It now appears in the admin app.",
     "tryAgain": "Try again",
     "trackOrder": "Track my order",
     "keepShopping": "Keep shopping"

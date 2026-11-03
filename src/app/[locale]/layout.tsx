@@ -3,7 +3,7 @@ import { notFound } from "next/navigation";
 import { cookies } from "next/headers";
 import { hasLocale, NextIntlClientProvider } from "next-intl";
 import { getTranslations, setRequestLocale } from "next-intl/server";
-import { Amiri, Cormorant_Garamond, IBM_Plex_Sans_Arabic, Manrope } from "next/font/google";
+import { fontVariables } from "@/lib/fonts";
 import { localeDirection, routing } from "@/i18n/routing";
 import { CURRENCY_COOKIE, DEFAULT_CURRENCY, isCurrency } from "@/lib/currency";
 import { CurrencyProvider } from "@/components/currency/currency-provider";
@@ -13,11 +13,6 @@ import { WhatsAppButton } from "@/components/layout/whatsapp-button";
 import { CartProvider } from "@/components/cart/cart-provider";
 import { CartDrawer } from "@/components/cart/cart-drawer";
 import "../globals.css";
-
-const cormorant = Cormorant_Garamond({ subsets: ["latin"], weight: ["400", "500", "600"], style: ["normal", "italic"], variable: "--font-cormorant" });
-const manrope = Manrope({ subsets: ["latin"], variable: "--font-manrope" });
-const amiri = Amiri({ subsets: ["arabic"], weight: ["400", "700"], variable: "--font-amiri" });
-const plexArabic = IBM_Plex_Sans_Arabic({ subsets: ["arabic"], weight: ["400", "500", "600", "700"], variable: "--font-plex-arabic" });
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
@@ -55,7 +50,7 @@ export default async function LocaleLayout({
     <html
       lang={locale}
       dir={localeDirection[locale]}
-      className={`${cormorant.variable} ${manrope.variable} ${amiri.variable} ${plexArabic.variable}`}
+      className={fontVariables}
     >
       <body className="min-h-dvh">
         <NextIntlClientProvider>

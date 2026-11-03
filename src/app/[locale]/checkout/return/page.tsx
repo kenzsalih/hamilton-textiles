@@ -3,6 +3,7 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 import { CheckCircle2, Clock, XCircle } from "lucide-react";
 import { Link } from "@/i18n/navigation";
 import { confirmCharge, type ConfirmResult } from "@/lib/payments/confirm";
+import { getRepo } from "@/lib/data";
 import { Price } from "@/components/currency/currency-provider";
 import { ClearCart } from "@/components/checkout/clear-cart";
 
@@ -13,16 +14,19 @@ export default async function CheckoutReturnPage({
   searchParams,
 }: {
   params: Promise<{ locale: string }>;
-  searchParams: Promise<{ tap_id?: string; demo?: string; total?: string }>;
+  searchParams: Promise<{ tap_id?: string; demo?: string }>;
 }) {
   const { locale } = await params;
   setRequestLocale(locale);
   const t = await getTranslations("order");
-  const { tap_id, demo, total } = await searchParams;
+  const { tap_id, demo } = await searchParams;
 
   let result: ConfirmResult;
-  if (demo && process.env.NODE_ENV !== "production") {
-    result = { status: "paid", orderNumber: "HT-DEMO" };
+  let totalFils: number | null = null;
+  const demoOrder = demo && process.env.NODE_ENV !== "production" ? await getRepo().getOrderByNumber(demo) : null;
+  if (demoOrder) {
+    result = { status: "paid", orderNumber: demoOrder.order_number };
+    totalFils = demoOrder.total_fils;
   } else if (tap_id) {
     try {
       result = await confirmCharge(tap_id);
@@ -51,14 +55,14 @@ export default async function CheckoutReturnPage({
           <div className="mx-auto mt-8 max-w-xs animate-rise rounded-2xl border border-sand bg-white/60 p-5 [animation-delay:240ms]">
             <p className="text-xs text-muted">{t("orderNumber")}</p>
             <p className="mt-1 font-display text-3xl tracking-wide text-pine-900" dir="ltr">{result.orderNumber}</p>
-            {demo && total && (
+            {totalFils !== null && (
               <p className="mt-2 text-sm text-ink-soft">
-                <Price fils={Number(total)} />
+                <Price fils={totalFils} />
               </p>
             )}
           </div>
         )}
-        {demo && <p className="mt-4 text-xs text-brass">{t("demoNote")}</p>}
+        {demoOrder && <p className="mt-4 text-xs text-brass">{t("demoNote")}</p>}
 
         <div className="mt-10 flex animate-rise flex-wrap justify-center gap-3 [animation-delay:320ms]">
           {result.status === "failed" ? (

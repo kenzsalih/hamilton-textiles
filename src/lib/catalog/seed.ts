@@ -17,7 +17,7 @@ export const seedCategories: Category[] = [
 
 const [abaya, thobe, cotton, silk, linen, chiffon, lace, printed] = seedCategories.map((c) => c.id);
 
-type SeedMaterial = Omit<Material, "id" | "created_at" | "images" | "low_stock_m" | "min_order_m" | "step_m"> &
+type SeedMaterial = Omit<Material, "id" | "created_at" | "images" | "is_active" | "low_stock_m" | "min_order_m" | "step_m"> &
   Partial<Pick<Material, "low_stock_m" | "min_order_m" | "step_m">>;
 
 const rows: SeedMaterial[] = [
@@ -42,6 +42,7 @@ export const seedMaterials: Material[] = rows.map((row, i) => ({
   low_stock_m: 10,
   min_order_m: 0.5,
   step_m: 0.5,
+  is_active: true,
   ...row,
   id: `d0000000-0000-4000-8000-${String(i + 1).padStart(12, "0")}`,
   created_at: new Date(Date.UTC(2026, 9, 1 + i)).toISOString(),

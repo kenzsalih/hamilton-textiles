@@ -35,6 +35,15 @@ Delivery fees and VAT are placeholders in `src/lib/shipping.ts` until the owner 
 
 Regenerate `supabase/seed.sql` after editing the starter catalogue with `npm run seed:sql`.
 
+## Admin app
+
+The owner console lives at `/admin` (English, mobile-first). It installs to the home screen as an app (Android: Chrome → Install app; iPhone: Safari → Share → Add to Home Screen). Once the site is on its own HTTPS domain, an Android APK can be produced from it with [PWABuilder](https://www.pwabuilder.com/) or Bubblewrap.
+
+- **Sign-in:** create the owner under Supabase → Authentication → Users and add their id to `public.admins` (see above). Without Supabase, local development offers a one-tap sign-in that uses the dev store.
+- **Dev store:** without Supabase, the site and admin share `.data/dev-store.json` (sample orders included). Delete the file to reset it.
+- Run `supabase/migrations/0002_admin_helpers.sql` after the initial schema.
+- Regenerate the app icons after a logo change with `node scripts/admin-icons.mjs`.
+
 ## Layout
 
 | Path | What lives there |
