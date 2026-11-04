@@ -6,6 +6,9 @@
 [build.environment]
   NODE_VERSION = "22"
   NEXT_TELEMETRY_DISABLED = "1"
+  # NEXT_PUBLIC_* values are public by design (Next.js puts them in the browser bundle),
+  # so the secrets scanner must not fail on them. SUPABASE_SERVICE_ROLE_KEY stays scanned.
+  SECRETS_SCAN_OMIT_KEYS = "NEXT_PUBLIC_SUPABASE_URL,NEXT_PUBLIC_SUPABASE_ANON_KEY,NEXT_PUBLIC_SITE_URL"
 
 # The admin service worker must never be cached, or app updates get stuck.
 [[headers]]
