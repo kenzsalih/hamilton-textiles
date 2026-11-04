@@ -32,6 +32,11 @@ The owner creates each account and enters passwords and payment or bank details 
      - **Enable automatic RLS**: tick it.
 2. Go to **Authentication → Sign In / Providers → Email** and **turn off "Allow new users to sign up"**. Only the owner ever logs in.
 3. Go to **Authentication → Users → Add user** and create the owner's login (email and password).
+   - Then go to **Authentication → URL Configuration**:
+     - Set **Site URL** to the live address.
+     - Add `https://<live address>/admin/**` under **Redirect URLs**.
+
+     The admin's "Forgot password?" emails need these to link back to the site.
 4. **[dev]** In the **SQL Editor**, run these files in order:
    1. `supabase/migrations/0001_initial_schema.sql`
    2. `supabase/migrations/0002_admin_helpers.sql`
