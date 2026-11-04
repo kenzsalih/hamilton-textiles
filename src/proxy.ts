@@ -27,7 +27,16 @@ async function refreshAdminSession(request: NextRequest) {
 }
 
 export default function proxy(request: NextRequest) {
-  const { pathname } = request.nextUrl;
+  const { pathname, searchParams } = request.nextUrl;
+  // A reset link that fell back to the Site URL (e.g. redirect URL not allowed yet): finish it in the admin.
+  if (!pathname.startsWith("/admin") && (searchParams.has("token_hash") || searchParams.has("code"))) {
+    const target = new URL("/admin/login/callback", request.url);
+    for (const k of ["token_hash", "type", "code"]) {
+      const v = searchParams.get(k);
+      if (v) target.searchParams.set(k, v);
+    }
+    return NextResponse.redirect(target);
+  }
   if (pathname === "/admin" || pathname.startsWith("/admin/")) {
     const response = refreshAdminSession(request);
     return response.then((r) => {
