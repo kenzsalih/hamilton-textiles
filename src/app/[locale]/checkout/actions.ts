@@ -8,6 +8,7 @@ import { sendOrderEmails } from "@/lib/email";
 import { getRepo } from "@/lib/data";
 import { createCharge, isTapConfigured } from "@/lib/payments/tap";
 import { DIAL_CODES } from "@/lib/countries";
+import { SITE_URL } from "@/lib/site";
 
 export type QuoteSummary = {
   subtotalFils: number;
@@ -42,7 +43,7 @@ export type PlaceOrderResult =
   | { ok: false; error: "unavailable" | "payment" | "server" };
 
 async function siteOrigin(): Promise<string> {
-  if (process.env.NEXT_PUBLIC_SITE_URL) return process.env.NEXT_PUBLIC_SITE_URL.replace(/\/$/, "");
+  if (process.env.NEXT_PUBLIC_SITE_URL || process.env.URL) return SITE_URL;
   const h = await headers();
   return `${h.get("x-forwarded-proto") ?? "http"}://${h.get("host")}`;
 }

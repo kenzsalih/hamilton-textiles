@@ -1,10 +1,11 @@
 import { getRepo, type OrderDetail } from "@/lib/data";
 import { bhd, metres } from "@/lib/admin/format";
+import { SITE_URL } from "@/lib/site";
 
 // Order emails go through Resend's HTTP API (free tier: 3,000 emails a month).
 // Without RESEND_API_KEY nothing is sent, so local development stays quiet.
 
-const SITE = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
+const SITE = SITE_URL;
 
 export function isEmailConfigured(): boolean {
   return Boolean(process.env.RESEND_API_KEY && process.env.EMAIL_FROM);

@@ -7,6 +7,7 @@ import { fontVariables } from "@/lib/fonts";
 import { localeDirection, routing } from "@/i18n/routing";
 import { CURRENCY_COOKIE, DEFAULT_CURRENCY, isCurrency } from "@/lib/currency";
 import { getRates } from "@/lib/fx";
+import { SITE_URL } from "@/lib/site";
 import { CurrencyProvider } from "@/components/currency/currency-provider";
 import { SiteHeader } from "@/components/layout/site-header";
 import { SiteFooter } from "@/components/layout/site-footer";
@@ -23,7 +24,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "meta" });
   return {
-    metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000"),
+    metadataBase: new URL(SITE_URL),
     title: { default: t("title"), template: `%s · Hamilton Textiles` },
     description: t("description"),
     alternates: { languages: { en: "/en", ar: "/ar" } },

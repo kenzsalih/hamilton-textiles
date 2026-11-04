@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { getCategories, getMaterialBySlug, getRelatedMaterials, localised } from "@/lib/catalog";
 import { seedMaterials } from "@/lib/catalog/seed";
+import { SITE_URL } from "@/lib/site";
 import { routing } from "@/i18n/routing";
 import { Link } from "@/i18n/navigation";
 import { FabricGallery } from "@/components/fabric/fabric-gallery";
@@ -52,7 +53,7 @@ export default async function FabricPage({ params }: { params: Params }) {
     { label: t("specs.sku"), value: material.sku },
   ].filter((s) => s.value);
 
-  const site = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
+  const site = SITE_URL;
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "Product",
