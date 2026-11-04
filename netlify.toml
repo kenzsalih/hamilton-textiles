@@ -1,0 +1,15 @@
+# Netlify picks up Next.js automatically (server actions, proxy, image optimisation).
+[build]
+  command = "npm run build"
+  publish = ".next"
+
+[build.environment]
+  NODE_VERSION = "22"
+  NEXT_TELEMETRY_DISABLED = "1"
+
+# The admin service worker must never be cached, or app updates get stuck.
+[[headers]]
+  for = "/admin-sw.js"
+  [headers.values]
+    Cache-Control = "no-cache"
+    Service-Worker-Allowed = "/admin"

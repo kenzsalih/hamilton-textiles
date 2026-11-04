@@ -147,7 +147,8 @@ export interface Repo {
 
   createOrder(order: NewOrder, items: NewOrderItem[]): Promise<{ id: string; order_number: string }>;
   setOrderPaymentRef(id: string, ref: string): Promise<void>;
-  markOrderPaid(id: string, ref: string, method: string): Promise<void>;
+  /** Returns true only for the call that actually moved the order to paid. */
+  markOrderPaid(id: string, ref: string, method: string): Promise<boolean>;
   getOrder(id: string): Promise<OrderDetail | null>;
   getOrderByNumber(orderNumber: string): Promise<OrderDetail | null>;
   listOrders(opts?: { status?: OrderStatus[]; since?: string; customerId?: string; limit?: number }): Promise<OrderDetail[]>;

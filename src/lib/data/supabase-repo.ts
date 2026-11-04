@@ -159,7 +159,7 @@ export function createSupabaseRepo(db: SupabaseClient): Repo {
     },
 
     async markOrderPaid(id, ref, method) {
-      check(await db.rpc("mark_order_paid", { p_order_id: id, p_payment_ref: ref, p_method: method }));
+      return Boolean(check(await db.rpc("mark_order_paid", { p_order_id: id, p_payment_ref: ref, p_method: method })));
     },
 
     async getOrder(id) {

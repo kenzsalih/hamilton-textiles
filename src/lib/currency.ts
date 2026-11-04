@@ -1,6 +1,6 @@
 // All prices are stored in fils (1 BHD = 1000 fils) and always charged in BHD.
 // Other currencies are display-only conversions; rates are units per 1 BHD.
-// TODO(phase 4): refresh rates daily from an FX API instead of these fixed values.
+// These fixed rates are the fallback; live rates come from src/lib/fx.ts.
 
 export const CURRENCIES = {
   BHD: { decimals: 3, rate: 1 },
@@ -25,8 +25,8 @@ export function isCurrency(value: unknown): value is CurrencyCode {
   return typeof value === "string" && value in CURRENCIES;
 }
 
-export function formatPrice(fils: number, currency: CurrencyCode, locale: string): string {
-  const { decimals, rate } = CURRENCIES[currency];
+export function formatPrice(fils: number, currency: CurrencyCode, locale: string, rate: number = CURRENCIES[currency].rate): string {
+  const { decimals } = CURRENCIES[currency];
   return new Intl.NumberFormat(locale === "ar" ? "ar-BH" : "en-BH", {
     style: "currency",
     currency,

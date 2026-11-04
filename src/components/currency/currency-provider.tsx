@@ -3,6 +3,7 @@
 import { createContext, useCallback, useContext, useState, type ReactNode } from "react";
 import { useLocale } from "next-intl";
 import { CURRENCY_COOKIE, formatPrice, type CurrencyCode } from "@/lib/currency";
+import type { Rates } from "@/lib/fx";
 
 type CurrencyContextValue = {
   currency: CurrencyCode;
@@ -12,7 +13,7 @@ type CurrencyContextValue = {
 
 const CurrencyContext = createContext<CurrencyContextValue | null>(null);
 
-export function CurrencyProvider({ initial, children }: { initial: CurrencyCode; children: ReactNode }) {
+export function CurrencyProvider({ initial, rates, children }: { initial: CurrencyCode; rates: Rates; children: ReactNode }) {
   const locale = useLocale();
   const [currency, setState] = useState(initial);
 
@@ -21,7 +22,7 @@ export function CurrencyProvider({ initial, children }: { initial: CurrencyCode;
     document.cookie = `${CURRENCY_COOKIE}=${code}; path=/; max-age=31536000; samesite=lax`;
   }, []);
 
-  const format = useCallback((fils: number) => formatPrice(fils, currency, locale), [currency, locale]);
+  const format = useCallback((fils: number) => formatPrice(fils, currency, locale, rates[currency]), [currency, locale, rates]);
 
   return <CurrencyContext value={{ currency, setCurrency, format }}>{children}</CurrencyContext>;
 }

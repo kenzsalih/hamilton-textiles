@@ -6,6 +6,7 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 import { fontVariables } from "@/lib/fonts";
 import { localeDirection, routing } from "@/i18n/routing";
 import { CURRENCY_COOKIE, DEFAULT_CURRENCY, isCurrency } from "@/lib/currency";
+import { getRates } from "@/lib/fx";
 import { CurrencyProvider } from "@/components/currency/currency-provider";
 import { SiteHeader } from "@/components/layout/site-header";
 import { SiteFooter } from "@/components/layout/site-footer";
@@ -45,6 +46,7 @@ export default async function LocaleLayout({
 
   const stored = (await cookies()).get(CURRENCY_COOKIE)?.value;
   const currency = isCurrency(stored) ? stored : DEFAULT_CURRENCY;
+  const rates = await getRates();
 
   return (
     <html
@@ -54,7 +56,7 @@ export default async function LocaleLayout({
     >
       <body className="min-h-dvh">
         <NextIntlClientProvider>
-          <CurrencyProvider initial={currency}>
+          <CurrencyProvider initial={currency} rates={rates}>
             <CartProvider>
               <SiteHeader />
               <main>{children}</main>

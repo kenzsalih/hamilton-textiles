@@ -5,6 +5,8 @@ Online fabric shop and owner console for Hamilton Textile W.L.L, Hunainiya, Riff
 - **Storefront** — English + Arabic (RTL), currency switcher, fabrics sold by the metre.
 - **Admin console** — installable web app for the owner (phase 3).
 
+Going live: see [LAUNCH.md](LAUNCH.md) — Cloudflare domain, Netlify, Supabase, Tap and Resend, step by step.
+
 ## Stack
 
 Next.js 16 (App Router) · Tailwind CSS 4 · next-intl · Supabase (Postgres, Auth, Storage) · Tap Payments for BenefitPay and cards (phase 2/4).
@@ -21,7 +23,7 @@ Without Supabase credentials the site runs on the starter catalogue in `src/lib/
 ## Connecting Supabase
 
 1. Create a project at supabase.com and copy `.env.example` to `.env.local` with its URL and keys.
-2. In the SQL editor, run `supabase/migrations/0001_initial_schema.sql`, then `supabase/seed.sql`.
+2. In the SQL editor, run `supabase/migrations/0001_initial_schema.sql`, `0002_admin_helpers.sql`, then `supabase/seed.sql`.
 3. Create the owner's login under Authentication → Users, then run
    `insert into public.admins (user_id) values ('<owner user id>');`
 
@@ -51,6 +53,7 @@ The owner console lives at `/admin` (English, mobile-first). It installs to the 
 | `src/app/[locale]` | Storefront pages (`/en`, `/ar`) |
 | `src/components` | UI — `brand`, `fabric`, `home`, `layout`, `currency` |
 | `src/lib/catalog` | Catalogue types, seed data and data access |
-| `src/lib/currency.ts` | Prices are integer fils; other currencies are display-only |
+| `src/lib/currency.ts`, `src/lib/fx.ts` | Prices are integer fils; other currencies are display-only, with live rates refreshed twice a day |
+| `src/lib/email.ts` | Order receipt and owner alert emails (Resend) |
 | `messages/` | English and Arabic copy |
 | `supabase/` | Schema, row-level security and seed data |

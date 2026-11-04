@@ -4,6 +4,7 @@ import { headers } from "next/headers";
 import { z } from "zod";
 import { checkoutSchema, quoteSchema, type CheckoutInput } from "@/lib/checkout/schema";
 import { priceOrder, type LineProblem, type PromoStatus } from "@/lib/checkout/pricing";
+import { sendOrderEmails } from "@/lib/email";
 import { getRepo } from "@/lib/data";
 import { createCharge, isTapConfigured } from "@/lib/payments/tap";
 import { DIAL_CODES } from "@/lib/countries";
@@ -58,8 +59,11 @@ export async function placeOrder(raw: CheckoutInput): Promise<PlaceOrderResult> 
   if (input.promoCode && quote.promoStatus !== "applied") return { ok: false, error: "promo", promoStatus: quote.promoStatus };
 
   const repo = getRepo();
+  // Without Tap, payments are simulated only in development: always with the local store,
+  // and against a real database only when DEMO_PAYMENTS=1 is set for testing.
   const simulatePayment = !isTapConfigured();
-  if (simulatePayment && (process.env.NODE_ENV === "production" || repo.mode !== "dev")) {
+  const demoAllowed = process.env.NODE_ENV !== "production" && (repo.mode === "dev" || process.env.DEMO_PAYMENTS === "1");
+  if (simulatePayment && !demoAllowed) {
     return { ok: false, error: "unavailable" };
   }
 
@@ -108,7 +112,7 @@ export async function placeOrder(raw: CheckoutInput): Promise<PlaceOrderResult> 
 
   if (simulatePayment) {
     // Development without Tap keys: treat the order as paid so the admin app has real orders to work with.
-    await repo.markOrderPaid(order.id, `demo_${order.order_number}`, "card");
+    if (await repo.markOrderPaid(order.id, `demo_${order.order_number}`, "card")) await sendOrderEmails(order.id);
     return { ok: true, redirectUrl: `/${input.locale}/checkout/return?demo=${order.order_number}` };
   }
 

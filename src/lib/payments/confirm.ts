@@ -1,4 +1,5 @@
 import { getRepo } from "@/lib/data";
+import { sendOrderEmails } from "@/lib/email";
 import { retrieveCharge } from "./tap";
 
 export type ConfirmResult =
@@ -40,6 +41,6 @@ export async function confirmCharge(chargeId: string): Promise<ConfirmResult> {
   }
 
   const method = charge.source?.payment_method?.toUpperCase() === "BENEFIT" ? "benefitpay" : "card";
-  await repo.markOrderPaid(order.id, charge.id, method);
+  if (await repo.markOrderPaid(order.id, charge.id, method)) await sendOrderEmails(order.id);
   return { status: "paid", orderNumber: order.order_number };
 }

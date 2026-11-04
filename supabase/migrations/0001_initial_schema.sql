@@ -201,7 +201,7 @@ create trigger orders_status_log after insert or update of status on public.orde
 -- Called by the payment webhook. Marks the order paid, takes the stock and
 -- counts the promo use in one transaction; safe to call twice.
 create or replace function public.mark_order_paid(p_order_id uuid, p_payment_ref text, p_method text)
-returns void
+returns boolean
 language plpgsql
 security definer
 set search_path = public
@@ -215,7 +215,7 @@ begin
     raise exception 'order % not found', p_order_id;
   end if;
   if v_order.status <> 'pending_payment' then
-    return;
+    return false;
   end if;
 
   for v_item in select material_id, metres from public.order_items where order_id = p_order_id and material_id is not null loop
@@ -231,6 +231,7 @@ begin
   update public.orders
     set status = 'paid', paid_at = now(), payment_ref = p_payment_ref, payment_method = p_method
     where id = p_order_id;
+  return true;
 end;
 $$;
 

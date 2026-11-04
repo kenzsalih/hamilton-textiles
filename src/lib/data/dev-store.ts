@@ -295,7 +295,7 @@ export const devRepo: Repo = {
   async markOrderPaid(id, ref, method) {
     const t = load();
     const o = t.orders.find((x) => x.id === id);
-    if (!o || o.status !== "pending_payment") return;
+    if (!o || o.status !== "pending_payment") return false;
     for (const item of t.order_items.filter((i) => i.order_id === id && i.material_id)) {
       await devRepo.adjustStock(item.material_id!, -item.metres, "order", null, id);
     }
@@ -306,6 +306,7 @@ export const devRepo: Repo = {
     Object.assign(o, { status: "paid", paid_at: now(), payment_ref: ref, payment_method: method, updated_at: now() });
     t.order_events.push({ order_id: id, status: "paid", note: null, created_at: now() });
     persist();
+    return true;
   },
 
   async getOrder(id) {

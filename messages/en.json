@@ -334,5 +334,110 @@
       "cancelled": "This order was cancelled.",
       "refunded": "This order was refunded."
     }
+  },
+  "policies": {
+    "updated": "Last updated {date}",
+    "questions": "Still have a question?",
+    "questionsBody": "Message us on WhatsApp — we usually reply within the hour during shop hours.",
+    "whatsapp": "Chat on WhatsApp",
+    "shipping": {
+      "eyebrow": "Delivery",
+      "title": "Shipping & delivery",
+      "intro": "Every order is cut by hand in our Riffa shop, then packed flat and sent on its way — or kept ready for you to collect.",
+      "tableZone": "Where",
+      "tableFee": "Delivery fee",
+      "tableTime": "Arrives in",
+      "tableFree": "Free over <amount></amount>",
+      "days": "{days} working days",
+      "zones": {
+        "BH": "Bahrain",
+        "GCC": "GCC (Saudi, UAE, Kuwait, Qatar, Oman)",
+        "INTL": "Rest of the world"
+      },
+      "sections": [
+        {
+          "h": "Cutting and dispatch",
+          "p": "Orders paid before 4 pm (Bahrain time) are usually cut the same day and dispatched the next working day. Large wholesale orders may take a little longer — we'll message you if so."
+        },
+        {
+          "h": "Collect from the shop",
+          "p": "Choose “Pickup” at checkout and we'll message you on WhatsApp when your fabric is ready at our shop in Hunainiya, Riffa. Pickup is always free."
+        },
+        {
+          "h": "International orders",
+          "p": "Prices are charged in Bahraini dinars. Customs duties or import taxes in your country, if any, are paid by the receiver on delivery."
+        },
+        {
+          "h": "Tracking",
+          "p": "You can follow your order any time on the Track order page using your order number and phone number."
+        }
+      ]
+    },
+    "returns": {
+      "eyebrow": "Returns",
+      "title": "Returns & exchanges",
+      "intro": "Because every length is cut to order, we can't take back fabric once it's cut. But if something isn't right, we'll make it right.",
+      "sections": [
+        {
+          "h": "Faulty or wrong fabric",
+          "p": "If your fabric arrives damaged, has a weaving fault, or isn't what you ordered, message us within 3 days of delivery with a photo. We'll send a replacement or refund you in full, including delivery."
+        },
+        {
+          "h": "Short lengths",
+          "p": "We measure twice and cut once. If your length is short of what you paid for, tell us within 3 days and we'll refund the difference or send the missing length."
+        },
+        {
+          "h": "Change of mind",
+          "p": "Cut fabric can't be returned for a change of mind or colour. Not sure about a shade? Message us before you order — we're happy to send close-up photos or a video in daylight."
+        },
+        {
+          "h": "Cancelling an order",
+          "p": "You can cancel for a full refund any time before your fabric is cut. Message us on WhatsApp with your order number."
+        },
+        {
+          "h": "Refunds",
+          "p": "Refunds go back to the card or BenefitPay account you paid with, usually within 5–10 working days depending on your bank."
+        }
+      ]
+    },
+    "faq": {
+      "eyebrow": "Help",
+      "title": "Questions & answers",
+      "intro": "The things customers ask us most. Don't see yours? Just message us.",
+      "items": [
+        {
+          "q": "How much fabric do I need?",
+          "a": "It depends on the garment and your size. As a guide, an abaya takes about 3–3.5 m and a thobe about 3.5–4 m. Use the metre calculator on our home page, or ask your tailor."
+        },
+        {
+          "q": "What's the smallest amount I can order?",
+          "a": "Most fabrics can be ordered from half a metre, in half-metre steps. Each fabric page shows its minimum."
+        },
+        {
+          "q": "Do you sell wholesale?",
+          "a": "Yes. For bulk quantities, message us on WhatsApp with the fabrics and lengths you need and we'll send a quote."
+        },
+        {
+          "q": "Will the colour look the same as on screen?",
+          "a": "We photograph every fabric in daylight, but screens vary. If the exact shade matters, ask us for an extra photo or video before ordering."
+        },
+        {
+          "q": "How do I pay?",
+          "a": "Online with BenefitPay or any debit or credit card. Payment is taken securely by Tap Payments — we never see your card details."
+        },
+        {
+          "q": "Can I see prices in my currency?",
+          "a": "Yes — use the currency switcher at the top of the page. Prices shown in other currencies are estimates; you're always charged in Bahraini dinars."
+        },
+        {
+          "q": "Can I visit the shop?",
+          "a": "Of course. We're in Hunainiya, Riffa — you'll find the map at the bottom of our home page. You're welcome to see and feel the fabrics before you buy."
+        },
+        {
+          "q": "Do you do tailoring?",
+          "a": "We sell fabric only, cut to your length. We don't offer tailoring or ready-made garments."
+        }
+      ]
+    }
   }
 }
