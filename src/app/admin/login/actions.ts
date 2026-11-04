@@ -33,7 +33,7 @@ export async function signIn(_prev: LoginState, form: FormData): Promise<LoginSt
 
 export type ResetRequestState = { sent: boolean; error: string | null };
 
-/** Emails a reset link. Always reports success so the form can't be used to probe which emails exist. */
+/** Emails a reset link. Supabase itself doesn't reveal whether the email exists. */
 export async function requestPasswordReset(_prev: ResetRequestState, form: FormData): Promise<ResetRequestState> {
   const email = String(form.get("email") ?? "").trim();
   if (!email) return { sent: false, error: "Enter your email." };
@@ -45,7 +45,10 @@ export async function requestPasswordReset(_prev: ResetRequestState, form: FormD
   });
   if (error) {
     console.error("Password reset email failed:", error.message);
-    if (error.status === 429) return { sent: false, error: "Too many reset emails. Please wait a few minutes and try again." };
+    return {
+      sent: false,
+      error: error.status === 429 ? "Too many reset emails. Please wait an hour and try again." : "Couldn't send the email. Please try again in a minute.",
+    };
   }
   return { sent: true, error: null };
 }

@@ -14,7 +14,7 @@ export function ForgotForm() {
       <div className="text-center">
         <MailCheck className="mx-auto size-10 text-pine-700" strokeWidth={1.5} />
         <p className="mt-4 text-sm leading-relaxed text-ink-soft">
-          If that email has an admin account, a reset link is on its way. Open it <span className="font-semibold text-ink">on this same device and browser</span> — the link works once, for one hour.
+          If that email has an admin account, a reset link is on its way. The link works once, for one hour.
         </p>
         <p className="mt-3 text-xs text-muted">Nothing after a few minutes? Check your spam folder.</p>
         <Link href="/admin/login" className="btn btn-ghost mt-6 w-full">
