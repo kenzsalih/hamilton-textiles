@@ -1,8 +1,10 @@
 "use client";
 
+import Link from "next/link";
 import { useActionState } from "react";
 import { Loader2 } from "lucide-react";
 import { signIn, type LoginState } from "./actions";
+import { authInputClass } from "./auth-card";
 
 export function LoginForm({ dev }: { dev: boolean }) {
   const [state, action, pending] = useActionState<LoginState, FormData>(signIn, { error: null });
@@ -31,7 +33,7 @@ export function LoginForm({ dev }: { dev: boolean }) {
           type="email"
           autoComplete="username"
           required
-          className="mt-1.5 h-12 w-full rounded-xl border border-sand bg-white px-4 text-base outline-none focus:border-pine-500"
+          className={authInputClass}
         />
       </label>
       <label className="block">
@@ -41,7 +43,7 @@ export function LoginForm({ dev }: { dev: boolean }) {
           type="password"
           autoComplete="current-password"
           required
-          className="mt-1.5 h-12 w-full rounded-xl border border-sand bg-white px-4 text-base outline-none focus:border-pine-500"
+          className={authInputClass}
         />
       </label>
       {state.error && (
@@ -53,6 +55,9 @@ export function LoginForm({ dev }: { dev: boolean }) {
         {pending && <Loader2 className="size-4 animate-spin" />}
         Sign in
       </button>
+      <Link href="/admin/login/forgot" className="block text-center text-xs font-semibold text-pine-700 hover:text-pine-900">
+        Forgot password?
+      </Link>
     </form>
   );
 }
