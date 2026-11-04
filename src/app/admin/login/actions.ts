@@ -2,7 +2,7 @@
 
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
-import { DEV_ADMIN_COOKIE, devSignInAllowed, getAuthClient, isAdminUser } from "@/lib/admin/session";
+import { DEV_ADMIN_COOKIE, devSignInAllowed, getAuthClient, isAdminUser, isSupabaseAuthConfigured } from "@/lib/admin/session";
 
 export type LoginState = { error: string | null };
 
@@ -15,6 +15,10 @@ export async function signIn(_prev: LoginState, form: FormData): Promise<LoginSt
   const email = String(form.get("email") ?? "").trim();
   const password = String(form.get("password") ?? "");
   if (!email || !password) return { error: "Enter your email and password." };
+  if (!isSupabaseAuthConfigured()) {
+    console.error("Admin sign-in: NEXT_PUBLIC_SUPABASE_URL or NEXT_PUBLIC_SUPABASE_ANON_KEY is missing at runtime");
+    return { error: "Sign-in isn't set up on this server yet (missing Supabase key)." };
+  }
 
   const supabase = await getAuthClient();
   const { data, error } = await supabase.auth.signInWithPassword({ email, password });
